@@ -3,12 +3,13 @@ package main
 import (
   "encoding/json"
   "errors"
-//  "fmt"
+  "fmt"
   "log"
   "net/http"
   "os"
   "strconv"
-  
+  "github.com/user/golang-gin/mysql"
+  "github.com/user/golang-gin/redisdb" 
   jwtmiddleware "github.com/auth0/go-jwt-middleware"
   jwt "github.com/dgrijalva/jwt-go"
   "github.com/gin-gonic/contrib/static"
@@ -52,8 +53,18 @@ var jokes = []Joke{
 var jwtMiddleWare *jwtmiddleware.JWTMiddleware
 
 func main() {
+	mysqlobject:=mysql.GetMySQL()
+	if (mysqlobject==nil) {
+	  fmt.Println("Failed to Initialize mYsql")
+	  return
+  }
+  redisobject:= redisdb.Get()
+  if (redisobject==nil) {
+          fmt.Println("Failed to Initialize mYsql")
+          return
+  }
   jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
-    ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
+  ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
       aud := os.Getenv("AUTH0_API_AUDIENCE")
       checkAudience := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
       if !checkAudience {

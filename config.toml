@@ -1,0 +1,13 @@
+[MySQLConnector]
+mySQLUrl            = "10.159.19.196:3306"
+mySQLDatabase       = "jams_de"
+mySQLUsername       = "jams_dev_de_rwuser"
+mySQLPassword       = "PKEw2D#D"
+mySQLNetwork        = "tcp"
+
+
+[RedisConfig]
+sentinelAddress     = ["192.168.7.7:26379"]
+masterName          = "mymaster"
+password            = "jamsDev@1234"
+
