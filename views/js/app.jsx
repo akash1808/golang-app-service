@@ -2,7 +2,7 @@ const AUTH0_CLIENT_ID = "HLBcwV8CSYE3N8JP6NKnvhmFpT5dt5e2";
 const AUTH0_DOMAIN = "dev-hxp53qi6.us.auth0.com";
 const AUTH0_CALLBACK_URL = location.href;
 const AUTH0_API_AUDIENCE = "http://13.235.39.98:8080/";
-const REACT_APP_URL=process.env.REACT_APP_URL
+const REACT_APP_URL=window.Configs.APP_URL
 class App extends React.Component {
   parseHash() {
     this.auth0 = new auth0.WebAuth({
@@ -171,7 +171,7 @@ class Joke extends React.Component {
   }
   serverRequest(joke) {
     $.post(
-      REACT_APP_URL+"/like/" + joke.id,
+      REACT_APP_URL+"/api/jokes/like/" + joke.id,
       { like: 1 },
       res => {
         console.log("res... ", res);
