@@ -16,7 +16,7 @@ script:
     - go build
 after_success:
     - cat ~/gcp-akash-287109-41bac7d58115.json | docker login -u _json_key --password-stdin https://asia.gcr.io
-    - docker build --tag "$IMAGE_NAME"
+    - docker build . --tag "$IMAGE_NAME"
     - git_sha="$(git rev-parse --short HEAD)"
     - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:develop"
     - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${git_sha}-develop"
