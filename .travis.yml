@@ -15,6 +15,8 @@ script:
     - go test -v
     - go build
 after_success:
+    - pwd
+    - ls 
     - docker pull "${IMAGE_NAME}:develop" || true
     - docker build --pull --cache-from "${IMAGE_NAME}:develop" --tag "$IMAGE_NAME"
     - cat ~/gcp-akash-287109-41bac7d58115.json | docker login -u _json_key --password-stdin https://asia.gcr.io
