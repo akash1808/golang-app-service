@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-const configFilePath = "/home/akash/config.toml"
+const configFilePath = "/config.toml"
 
 func (rDB *RedisDB) initConfig() {
 

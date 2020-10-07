@@ -10,7 +10,7 @@ import (
 
 const (
 	maxAllowedPacketSize 	= 16777216		// 16MB
-	configFilePath = "/home/akash/config.toml"
+	configFilePath = "/config.toml"
 )
 
 type MySQLConnector struct {
