@@ -156,12 +156,16 @@ func authMiddleware() gin.HandlerFunc {
 
 // JokeHandler returns a list of jokes available (in memory)
 func JokeHandler(c *gin.Context) {
+  c.Header("Access-Control-Allow-Origin", "*")
+  c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
   c.Header("Content-Type", "application/json")
   
   c.JSON(http.StatusOK, jokes)
 }
 
 func LikeJoke(c *gin.Context) {
+  c.Header("Access-Control-Allow-Origin", "*")
+  c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
   // Check joke ID is valid
   if jokeid, err := strconv.Atoi(c.Param("jokeID")); err == nil {
     // find joke and increment likes
