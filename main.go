@@ -9,7 +9,7 @@ import (
   "os"
   "strconv"
   "github.com/akash1808/golang-gin/mysql"
-  "github.com/akash1808/golang-gin/redisdb" 
+  //"github.com/akash1808/golang-gin/redisdb" 
   //jwtmiddleware "github.com/auth0/go-jwt-middleware"
   //jwt "github.com/dgrijalva/jwt-go"
   "github.com/gin-gonic/contrib/static"
@@ -58,11 +58,11 @@ func main() {
 	  fmt.Println("Failed to Initialize mYsql")
 	  return
   }
-  redisobject:= redisdb.Get()
-  if (redisobject==nil) {
-          fmt.Println("Failed to Initialize mYsql")
-          return
-  }
+//  redisobject:= redisdb.Get()
+//  if (redisobject==nil) {
+//          fmt.Println("Failed to Initialize mYsql")
+//          return
+//  }
   //jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
   //ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
   //    aud := os.Getenv("AUTH0_API_AUDIENCE")
