@@ -49,7 +49,7 @@ class App extends React.Component {
     if (idToken) {
       this.loggedIn = true;
     } else {
-      this.loggedIn = false;
+      this.loggedIn = true;
     }
   }
     

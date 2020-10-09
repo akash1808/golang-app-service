@@ -1,6 +1,6 @@
 FROM centos:7
 COPY golang-gin /
-COPY views /
+ADD views/ /views/
 COPY config.toml /
 EXPOSE 8080
 RUN chmod +x golang-gin
