@@ -2,11 +2,11 @@ language: go
 go:
     - 1.15
 env:
-    - IMAGE_NAME=asia.gcr.io/gcp-akash-287109/golang-gin
+    - IMAGE_NAME=asia.gcr.io/gcp-akash-287109/golang-app-service
 before_install:
     - pwd
     - ls
-    -  openssl aes-256-cbc -K $encrypted_0a08b4698b52_key -iv $encrypted_0a08b4698b52_iv -in gcp-akash-287109-41bac7d58115.json.enc -out ~/gcp-akash-287109-41bac7d58115.json -d
+    -   openssl aes-256-cbc -K $encrypted_0a08b4698b52_key -iv $encrypted_0a08b4698b52_iv -in gcp-akash-287109-41bac7d58115.json.enc -out ~/gcp-akash-287109-41bac7d58115.json -d
     - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     - sudo apt-get update

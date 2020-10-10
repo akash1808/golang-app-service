@@ -93,7 +93,6 @@ func main() {
   router := gin.Default()
   
   // Serve the frontend
-  router.Use(static.Serve("/", static.LocalFile("./views", true)))
   
   api := router.Group("/api")
   {
@@ -103,7 +102,6 @@ func main() {
       })
     })
     api.GET("/jokes",  JokeHandler)
-    api.POST("/jokes/like/:jokeID", LikeJoke)
   }
   // Start the app
   router.Run("0.0.0.0:8080")
@@ -163,20 +161,3 @@ func JokeHandler(c *gin.Context) {
   c.JSON(http.StatusOK, jokes)
 }
 
-func LikeJoke(c *gin.Context) {
-  c.Header("Access-Control-Allow-Origin", "*")
-  c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
-  // Check joke ID is valid
-  if jokeid, err := strconv.Atoi(c.Param("jokeID")); err == nil {
-    // find joke and increment likes
-    for i := 0; i < len(jokes); i++ {
-      if jokes[i].ID == jokeid {
-        jokes[i].Likes = jokes[i].Likes + 1
-      }
-    }
-    c.JSON(http.StatusOK, &jokes)
-  } else {
-    // the jokes ID is invalid
-    c.AbortWithStatus(http.StatusNotFound)
-  }
-}
