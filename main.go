@@ -7,12 +7,10 @@ import (
 //  "log"
   "net/http"
   "os"
-  "strconv"
   "github.com/akash1808/golang-gin/mysql"
   //"github.com/akash1808/golang-gin/redisdb" 
   //jwtmiddleware "github.com/auth0/go-jwt-middleware"
   //jwt "github.com/dgrijalva/jwt-go"
-  "github.com/gin-gonic/contrib/static"
   "github.com/gin-gonic/gin"
 )
 
