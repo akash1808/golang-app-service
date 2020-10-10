@@ -123,11 +123,26 @@ class LoggedIn extends React.Component {
   }
 
   serverRequest() {
-    $.get(REACT_APP_URL+"/api/jokes", res => {
-      this.setState({
-        jokes: res
-      });
-    });
+     var that = this
+
+     $.ajax({
+    'async': false,
+    'type': "GET",
+    'crossDomain': true,
+    'global': false,
+    'url': REACT_APP_URL+"/api/jokes",
+    'success': function (data) {
+        
+        that.setState({ jokes: data });
+        
+    }
+   });
+
+   // $.get(REACT_APP_URL+"/api/jokes", res => {
+   //   this.setState({
+   //     jokes: res
+   //   });
+   // });
   }
 
   componentDidMount() {
@@ -168,17 +183,31 @@ class Joke extends React.Component {
   like() {
     let joke = this.props.joke;
     this.serverRequest(joke);
-  }
-  serverRequest(joke) {
-    $.post(
-      REACT_APP_URL+"/api/jokes/like/" + joke.id,
-      { like: 1 },
-      res => {
-        console.log("res... ", res);
-        this.setState({ liked: "Liked!", jokes: res });
-        this.props.jokes = res;
-      }
-    );
+   }
+    serverRequest(joke) {
+	    var that = this
+    $.ajax({
+    'async': false,
+    'type': "POST",
+    'crossDomain': true,
+    'global': false,
+    'url': REACT_APP_URL+"/api/jokes/like/" + joke.id,
+    'data': { like: 1},
+    'success': function (data) {
+        console.log("res... ", data);
+        that.setState({ liked: "Liked!", jokes: data });
+        that.props.jokes = data;	
+    }
+   });
+ //   $.post(
+ //     REACT_APP_URL+"/api/jokes/like/" + joke.id,
+ //     { like: 1 },
+ //     res => {
+ //       console.log("res... ", res);
+ //       this.setState({ liked: "Liked!", jokes: res });
+ //       this.props.jokes = res;
+ //     }
+ //   );
   }
 
   render() {
