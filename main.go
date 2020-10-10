@@ -7,7 +7,7 @@ import (
 //  "log"
   "net/http"
   "os"
-  "github.com/akash1808/golang-gin/mysql"
+  "github.com/akash1808/golang-app-service/mysql"
   //"github.com/akash1808/golang-gin/redisdb" 
   //jwtmiddleware "github.com/auth0/go-jwt-middleware"
   //jwt "github.com/dgrijalva/jwt-go"
